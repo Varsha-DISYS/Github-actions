@@ -7,5 +7,5 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Print File Contents
-        run: cat Github-actions/var.txt
+        run: cat var.txt
 
