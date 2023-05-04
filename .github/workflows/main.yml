@@ -1,0 +1,11 @@
+name: print-file-contents
+'on': push
+jobs:
+  print-contents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Print File Contents
+        run: cat Github-actions/var.txt
+
