@@ -13,6 +13,8 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+        env:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: Deploy ARM template
         uses: azure/cli@v1.0.0
