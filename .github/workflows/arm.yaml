@@ -25,7 +25,4 @@ jobs:
               --template-file ./my-template.json \
               --parameters ./my-parameters.json 
         env:
-          AZURE_SUBSCRIPTION_ID: '2c00645e-fad1-46f3-ba18-904edde8736c'
-          AZURE_TENANT_ID: '08fdfb44-3c18-4aa7-9519-72bddc98ad3a'
-          AZURE_CLIENT_ID: '7a61cb8d-89eb-4118-be74-011035efa4bf'
           AZURE_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
