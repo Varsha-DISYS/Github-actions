@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2016-06-01",
+      "name": "MyLogicApp",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "emailTo": {
+              "type": "string"
+            }
+          },
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": {
+                "schema": {
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "actions": {
+            "Send_an_email_(V2)": {
+              "type": "ApiConnection",
+              "inputs": {
+                "body": {
+                  "To": "[parameters('emailTo')]",
+                  "Subject": "Logic App Test",
+                  "Body": "Hello from my logic app!"
+                },
+                "host": {
+                  "connection": {
+                    "name": "@parameters('$connections')['office365']['connectionId']"
+                  }
+                },
+                "method": "post",
+                "path": "/v2/Mail"
+              }
+            }
+          },
+          "outputs": {}
+        }
+      }
+    }
+  ]
+}
