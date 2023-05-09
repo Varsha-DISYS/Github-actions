@@ -1,12 +1,13 @@
 name: Example Workflow
 on:
-  workflow_call:
-        inputs: 
-          input_name:
-          description: Description of the input
+  push:
+        inputs:
+        input_name:
+        description: "Description of the input"
+    
         secrets:
-          secret_name:
-          description: Description of the secret
+        secret_name:
+        description: "Description of the secret"
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -14,4 +15,7 @@ jobs:
       - name: Step 1
         run: >-
           echo "Input value is ${{ inputs.input_name }} and secret value is ${{
-          secrets.SECRET_MAGIC }}"
+          secrets.secret_name }}"
+          
+
+
