@@ -1,0 +1,14 @@
+name: Authenticate-Azure-Portal
+'on':
+  workflow_dispatch: null
+jobs:
+  authenticate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      - name: Azure CLI Command
+        run: |
+          az webapp list --query "[?state=='Running']"
