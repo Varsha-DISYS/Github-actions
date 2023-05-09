@@ -1,0 +1,19 @@
+name: My Workflow
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    inputs:
+      message:
+        description: The message to display
+        required: true
+    steps:
+      - name: Display Message
+        env:
+          SECRET_KEY: '${{ secrets.SECRET_MAGIC }}'
+        run: |
+          echo ${{ inputs.message }}
+          echo $SECRET_KEY
