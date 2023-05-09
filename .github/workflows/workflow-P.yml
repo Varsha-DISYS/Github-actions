@@ -1,0 +1,23 @@
+name: Pipeline-reusable-secret
+
+on:
+  push:
+    branches:
+      - main
+
+inputs:
+  secret-value:
+    description: 'The value of the secret to check'
+
+jobs:
+  default-env-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running secrets
+        env:
+          DEVOPS: ${{ inputs.secret-value }}
+        run: |
+          if [ "$DEVOPS" == "DevOps Training" ]
+          then
+            echo "Secret opened"
+          fi
