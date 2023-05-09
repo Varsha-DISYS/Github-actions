@@ -3,13 +3,8 @@ name: Mixed inputs
 on:
   workflow_dispatch:
     inputs:
-      name:
-        type: choice
-        description: Who to greet
-        options: 
-        - monalisa
-        - cschleiden
       message:
+        description: Hello Github
         required: true
       environment:
         type: environment
@@ -20,4 +15,4 @@ jobs:
 
     steps:
     - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} wishes ${{ github.event.inputs.name }}"
+      run: echo "${{ inputs.message }}"
