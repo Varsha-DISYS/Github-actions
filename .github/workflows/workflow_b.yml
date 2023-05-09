@@ -1,5 +1,5 @@
 name: Example Workflow
-'on':
+on:
   workflow_call:
         inputs: 
           input_name:
