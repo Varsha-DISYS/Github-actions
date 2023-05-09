@@ -1,20 +1,21 @@
-name: Pipeline-to-reusable
+name: Example Workflow
 'on':
   push:
     branches:
       - main
-inputs:
-  secret-value:
-    description: The value of the secret to check
 jobs:
-  default-env-variables:
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Running secrets
-        env:
-          DEVOPS: '${{ inputs.secret-value }}'
-        run: |
-          if [ "$DEVOPS" == "DevOps Training" ]
-          then
-            echo "Secret opened"
-          fi
+      - name: Step 1
+        run: >-
+          echo "Input value is ${{ inputs.input_name }} and secret value is ${{
+          secrets.secret_name }}"
+inputs:
+  input_name:
+    description: Description of the input
+  another_input:
+    description: Another input description
+secrets:
+  secret_name:
+    description: Description of the secret
