@@ -1,19 +1,23 @@
-name: My Workflow
-'on':
-  workflow_call:
+name: Mixed inputs
+
+on:
+  workflow_dispatch:
     inputs:
+      name:
+        type: choice
+        description: Who to greet
+        options: 
+        - monalisa
+        - cschleiden
       message:
-      description: The message to display
-      required: true
-    
+        required: true
+      environment:
+        type: environment
+
 jobs:
-  my-job:
+  greet:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Display Message
-        env:
-          SECRET_KEY: '${{ secrets.SECRET_MAGIC }}'
-        run: |
-          echo ${{ inputs.message }}
-          echo $SECRET_KEY
+    - name: Send greeting
+      run: echo "${{ github.event.inputs.message }} wishes ${{ github.event.inputs.name }}"
