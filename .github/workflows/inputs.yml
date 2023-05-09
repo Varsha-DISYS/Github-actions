@@ -1,18 +1,18 @@
-name: Mixed inputs
-
-on:
-  workflow_dispatch:
+name: Reusable workflow example
+'on':
+  workflow_call:
     inputs:
-      message:
-        description: Hello Github
+      config-path:
         required: true
-      environment:
-        type: environment
-
+        type: string
+    secrets:
+      token:
+        required: true
 jobs:
-  greet:
+  triage:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Send greeting
-      run: echo "${{ inputs.message }}"
+      - uses: actions/labeler@v4
+        with:
+          repo-token: '${{ secrets.SECRET_MAGIC }}'
+          configuration-path: '${{ inputs.config-path }}'
