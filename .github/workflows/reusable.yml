@@ -1,16 +1,15 @@
-name: Call a reusable workflow
+name: resuable workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-
-  call-workflow-passing-data:
-    permissions:
-      contents: read
-      pull-requests: write
-    uses: Varsha-Disys/Github-actions/.github/workflows/workflowb.yml
-    with:
-      token: ${{ secrets.SECRET_MAGIC }}
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Pipeline-to-Secret workflow
+        uses: Github-actions/.github/workflows/workflow-P.yml@main
+        with:
+          secret-value: ${{ secrets.SECRET_MAGIC }}
