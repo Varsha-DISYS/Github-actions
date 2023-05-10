@@ -2,7 +2,8 @@ name: Reusable workflow example
 'on':
   workflow_dispatch:
     inputs:
-      required: true
+      name:
+        required: true
 jobs:
   triage:
     runs-on: ubuntu-latest
