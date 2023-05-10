@@ -11,4 +11,5 @@ jobs:
     uses: varsha-disys/github-actions/.github/workflows/workflow_b.yml@main
     with:
       config-path: .github/labeler.yml
-    
+    secrets:
+      token: ${{ secrets.SECRET_MAGIC }}
