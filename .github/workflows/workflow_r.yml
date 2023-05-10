@@ -1,16 +1,19 @@
-name: Call a reusable workflow
+name: resusable-workflow-caller
 
-'on':
+on:
+  push:
+    branches: none # [ main ]
+  pull_request:
+    branches: none # [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    workflow_call:
-    
+
 jobs:
-  call-workflow-passing-data:
-    permissions:
-      contents: read
-      pull-requests: write
+  call-workflow-A:
     uses: varsha-disys/github-actions/.github/workflows/workflow_b.yml@main
     with:
-      config-path: .github/labeler.yml
+      username: Varsha
     secrets:
       token: ${{ secrets.SECRET_MAGIC }}
+
