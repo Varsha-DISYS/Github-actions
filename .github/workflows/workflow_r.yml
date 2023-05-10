@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: varsha-disys/github-actions/.github/workflows/workflow_b.yml@main
+    uses: varsha-disys/github-actions/.github/workflows/workflow_b.yml@v1
     with:
       config-path: .github/labeler.yml
     secrets:
