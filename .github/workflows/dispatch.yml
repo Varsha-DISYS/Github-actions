@@ -8,7 +8,9 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          creds: '${{ secrets.AZURE_CREDENTIALS }}'
-      - name: Azure CLI Command
-        run: |
-          az webapp list --query "[?state=='Running']"
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          allow-no-subscriptions: true
+          enable-AzPSSession: true
+        env:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+     
