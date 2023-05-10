@@ -7,5 +7,6 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      '-name': greet run echo "Running"
-
+      - name: my-step
+        run: echo "Running"
+ 
