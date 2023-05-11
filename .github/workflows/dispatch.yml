@@ -1,16 +1,12 @@
-name: Authenticate-Azure-Portal
-'on':
-  workflow_dispatch: null
+
+name: AzureLoginSample
+'on': workflow_dispatch
+  
 jobs:
-  authenticate:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
+      - name: Log in with Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          allow-no-subscriptions: true
-          enable-AzPSSession: true
-        env:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
